@@ -5,6 +5,7 @@ export interface TaskQuery {
   search?: string;
   status?: string;
   priority?: string;
+  overdue?: boolean;
   sort?: 'newest' | 'oldest' | 'due_date';
   page?: number;
   limit?: number;

@@ -16,7 +16,7 @@ export function TaskToolbar({ query, onChange }: TaskToolbarProps) {
 
   function handleSelect(field: 'status' | 'priority' | 'sort') {
     return (e: ChangeEvent<HTMLSelectElement>) => {
-      onChange({ ...query, [field]: e.target.value || undefined, page: 1 });
+      onChange({ ...query, [field]: e.target.value || undefined, overdue: undefined, page: 1 });
     };
   }
 

@@ -6,11 +6,21 @@ interface StatCardProps {
   value: number;
   icon: ReactNode;
   accent: string;
+  onClick?: () => void;
+  active?: boolean;
 }
 
-export function StatCard({ label, value, icon, accent }: StatCardProps) {
+export function StatCard({ label, value, icon, accent, onClick, active }: StatCardProps) {
+  const Wrapper = onClick ? 'button' : 'div';
+
   return (
-    <div className="relative overflow-hidden rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
+    <Wrapper
+      onClick={onClick}
+      type={onClick ? 'button' : undefined}
+      className={`relative overflow-hidden rounded-xl border bg-white p-5 text-left shadow-sm transition ${
+        onClick ? 'cursor-pointer hover:-translate-y-0.5 hover:shadow-md' : ''
+      } ${active ? 'border-amber ring-2 ring-amber' : 'border-slate-200'}`}
+    >
       <div className="relative flex items-center gap-4">
         <div className="relative flex h-12 w-12 shrink-0 items-center justify-center">
           <Hexagon className="absolute inset-0 h-full w-full" fill={accent} />
@@ -21,6 +31,6 @@ export function StatCard({ label, value, icon, accent }: StatCardProps) {
           <p className="mt-1 text-sm text-slate-500">{label}</p>
         </div>
       </div>
-    </div>
+    </Wrapper>
   );
 }

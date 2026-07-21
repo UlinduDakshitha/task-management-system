@@ -142,11 +142,54 @@ export function DashboardPage() {
 
       <main className="mx-auto max-w-6xl px-4 py-6 sm:px-6">
         <section className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-5">
-          <StatCard label="Total Tasks" value={stats.total} icon={<ListChecks className="h-5 w-5" />} accent="#10192E" />
-          <StatCard label="Pending" value={stats.pending} icon={<CircleDashed className="h-5 w-5" />} accent="#64748B" />
-          <StatCard label="In Progress" value={stats.inProgress} icon={<Loader2 className="h-5 w-5" />} accent="#2563EB" />
-          <StatCard label="Completed" value={stats.completed} icon={<CircleCheckBig className="h-5 w-5" />} accent="#10B981" />
-          <StatCard label="Overdue" value={stats.overdue} icon={<AlertTriangle className="h-5 w-5" />} accent="#DC2626" />
+          <StatCard
+            label="Total Tasks"
+            value={stats.total}
+            icon={<ListChecks className="h-5 w-5" />}
+            accent="#10192E"
+            active={!query.status && !query.priority && !query.overdue}
+            onClick={() => setQuery({ page: 1, limit: 10, sort: query.sort ?? 'newest' })}
+          />
+          <StatCard
+            label="Pending"
+            value={stats.pending}
+            icon={<CircleDashed className="h-5 w-5" />}
+            accent="#64748B"
+            active={query.status === 'Pending'}
+            onClick={() =>
+              setQuery({ ...query, status: 'Pending', priority: undefined, overdue: undefined, page: 1 })
+            }
+          />
+          <StatCard
+            label="In Progress"
+            value={stats.inProgress}
+            icon={<Loader2 className="h-5 w-5" />}
+            accent="#2563EB"
+            active={query.status === 'In Progress'}
+            onClick={() =>
+              setQuery({ ...query, status: 'In Progress', priority: undefined, overdue: undefined, page: 1 })
+            }
+          />
+          <StatCard
+            label="Completed"
+            value={stats.completed}
+            icon={<CircleCheckBig className="h-5 w-5" />}
+            accent="#10B981"
+            active={query.status === 'Completed'}
+            onClick={() =>
+              setQuery({ ...query, status: 'Completed', priority: undefined, overdue: undefined, page: 1 })
+            }
+          />
+          <StatCard
+            label="Overdue"
+            value={stats.overdue}
+            icon={<AlertTriangle className="h-5 w-5" />}
+            accent="#DC2626"
+            active={!!query.overdue}
+            onClick={() =>
+              setQuery({ ...query, overdue: true, status: undefined, priority: undefined, page: 1 })
+            }
+          />
         </section>
 
         <div className="mt-6 flex flex-col gap-4">

@@ -18,7 +18,7 @@ const SORT_COLUMNS: Record<string, string> = {
  */
 export const getTasks = asyncHandler(async (req: Request, res: Response) => {
   const userId = req.user!.id;
-  const { search, status, priority, sort } = req.query as Record<string, string | undefined>;
+  const { search, status, priority, sort, overdue } = req.query as Record<string, string | undefined>;
 
   const page = Math.max(1, Number(req.query.page) || 1);
   const limit = Math.min(50, Math.max(1, Number(req.query.limit) || 10));
@@ -38,6 +38,11 @@ export const getTasks = asyncHandler(async (req: Request, res: Response) => {
   if (priority) {
     values.push(priority);
     conditions.push(`priority = $${values.length}`);
+  }
+  // "Overdue" isn't a stored field — it's derived from due_date vs today,
+  // same rule used for the dashboard stat and the per-task badge.
+  if (overdue === 'true') {
+    conditions.push(`due_date < CURRENT_DATE AND status != 'Completed'`);
   }
 
   const whereClause = conditions.join(' AND ');
