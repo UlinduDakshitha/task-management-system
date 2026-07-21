@@ -1,6 +1,6 @@
 import { Task } from '../types';
 import { PriorityBadge, StatusBadge, OverdueBadge } from './Badges';
-import { formatDate, isOverdue } from '../utils/date';
+import { formatDate, formatDateTime, isOverdue } from '../utils/date';
 
 interface TaskRowProps {
   task: Task;
@@ -25,6 +25,10 @@ export function TaskRow({ task, onEdit, onDelete }: TaskRowProps) {
           <PriorityBadge priority={task.priority} />
           <StatusBadge status={task.status} />
           <span className="text-xs text-slate-400">Due {formatDate(task.due_date)}</span>
+        </div>
+        <div className="mt-1.5 flex flex-wrap gap-x-3 text-xs text-slate-400">
+          <span>Created {formatDateTime(task.created_at)}</span>
+          <span>Updated {formatDateTime(task.updated_at)}</span>
         </div>
       </div>
 
