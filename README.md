@@ -116,6 +116,37 @@ npm run build     # outputs to frontend/dist
 
 Then open `http://localhost:5173` and log in with `admin@test.com` / `123456`.
 
+## Running with Docker (Bonus)
+
+The whole stack (PostgreSQL + backend + frontend) can be started with a single
+command — no local Node.js or PostgreSQL install required.
+
+```bash
+docker compose up --build
+```
+
+This will:
+- Start a PostgreSQL 16 container and automatically run `schema.sql` then
+  `seed.sql` the first time the database volume is created
+- Build and start the backend API on `http://localhost:5000`
+- Build and start the frontend (served by nginx) on `http://localhost:5173`
+
+Log in with the same default credentials: `admin@test.com` / `123456`.
+
+To stop everything:
+```bash
+docker compose down
+```
+
+To stop and also wipe the database (fresh start next time):
+```bash
+docker compose down -v
+```
+
+> Note: `docker-compose.yml` uses fixed development credentials
+> (`DB_PASSWORD=postgres`, a placeholder `JWT_SECRET`) for convenience. Change
+> these in `docker-compose.yml` before deploying anywhere public.
+
 ## API Documentation
 
 All endpoints are prefixed with `/api`. Task endpoints require an
@@ -148,6 +179,20 @@ All endpoints are prefixed with `/api`. Task endpoints require an
 }
 ```
 
+## Testing (Bonus)
+
+**Backend** (Jest — validation rules and utility classes):
+```bash
+cd backend
+npm test
+```
+
+**Frontend** (Vitest — date/overdue logic):
+```bash
+cd frontend
+npm test
+```
+
 ## Assumptions Made
 
 - No registration flow is needed — a single seeded admin user is sufficient, as stated
@@ -177,6 +222,10 @@ All endpoints are prefixed with `/api`. Task endpoints require an
 - Loading and empty states on the task list
 - Responsive layout (mobile, tablet, desktop)
 - Pagination
+- Dark mode with a toggle button (persisted in localStorage)
+- Docker support (`docker compose up --build` runs the full stack)
+- Unit tests for backend validation and utility logic (`npm test` in `backend/`)
 
-Not implemented (time-boxed for the assessment): dark mode, Docker, automated tests,
-refresh tokens, and hosted deployment.
+Not implemented (time-boxed for the assessment): refresh tokens and hosted
+deployment (frontend/backend URLs, if deployed, are listed in the submission
+email).
