@@ -36,11 +36,11 @@ export function LoginPage() {
 
   return (
     <div className="flex min-h-screen items-center justify-center bg-ink px-4">
-      <div className="w-full max-w-sm rounded-2xl bg-white p-8 shadow-xl">
+      <div className="w-full max-w-sm rounded-2xl bg-white p-8 shadow-xl dark:bg-slate-800">
         <div className="flex flex-col items-center">
           <Hexagon className="h-12 w-12" />
-          <h1 className="mt-4 font-display text-xl font-semibold text-ink">Task Manager</h1>
-          <p className="mt-1 text-sm text-slate-500">Sign in to manage your daily tasks</p>
+          <h1 className="mt-4 font-display text-xl font-semibold text-ink dark:text-white">Task Manager</h1>
+          <p className="mt-1 text-sm text-slate-500 dark:text-slate-400">Sign in to manage your daily tasks</p>
         </div>
 
         <form onSubmit={handleSubmit} className="mt-6 space-y-4">
@@ -78,7 +78,7 @@ export function LoginPage() {
           </button>
         </form>
 
-        <p className="mt-5 text-center text-xs text-slate-400">
+        <p className="mt-5 text-center text-xs text-slate-400 dark:text-slate-500">
           Demo credentials: admin@test.com / 123456
         </p>
       </div>

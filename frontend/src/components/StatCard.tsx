@@ -17,9 +17,9 @@ export function StatCard({ label, value, icon, accent, onClick, active }: StatCa
     <Wrapper
       onClick={onClick}
       type={onClick ? 'button' : undefined}
-      className={`relative overflow-hidden rounded-xl border bg-white p-5 text-left shadow-sm transition ${
+      className={`relative overflow-hidden rounded-xl border bg-white p-5 text-left shadow-sm transition dark:bg-slate-800 ${
         onClick ? 'cursor-pointer hover:-translate-y-0.5 hover:shadow-md' : ''
-      } ${active ? 'border-amber ring-2 ring-amber' : 'border-slate-200'}`}
+      } ${active ? 'border-amber ring-2 ring-amber' : 'border-slate-200 dark:border-slate-700'}`}
     >
       <div className="relative flex items-center gap-4">
         <div className="relative flex h-12 w-12 shrink-0 items-center justify-center">
@@ -27,8 +27,8 @@ export function StatCard({ label, value, icon, accent, onClick, active }: StatCa
           <span className="relative text-white">{icon}</span>
         </div>
         <div>
-          <p className="font-display text-2xl font-semibold leading-none text-ink">{value}</p>
-          <p className="mt-1 text-sm text-slate-500">{label}</p>
+          <p className="font-display text-2xl font-semibold leading-none text-ink dark:text-white">{value}</p>
+          <p className="mt-1 text-sm text-slate-500 dark:text-slate-400">{label}</p>
         </div>
       </div>
     </Wrapper>

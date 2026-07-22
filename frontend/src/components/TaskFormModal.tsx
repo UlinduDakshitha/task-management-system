@@ -69,8 +69,8 @@ export function TaskFormModal({ open, initialTask, onClose, onSubmit }: TaskForm
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-ink/40 p-4">
-      <div className="w-full max-w-lg rounded-xl bg-white p-6 shadow-xl">
-        <h2 className="font-display text-lg font-semibold text-ink">
+      <div className="w-full max-w-lg rounded-xl bg-white p-6 shadow-xl dark:bg-slate-800">
+        <h2 className="font-display text-lg font-semibold text-ink dark:text-white">
           {initialTask ? 'Edit Task' : 'New Task'}
         </h2>
 
@@ -85,13 +85,13 @@ export function TaskFormModal({ open, initialTask, onClose, onSubmit }: TaskForm
           />
 
           <div>
-            <label htmlFor="description" className="mb-1 block text-sm font-medium text-slate-700">
+            <label htmlFor="description" className="mb-1 block text-sm font-medium text-slate-700 dark:text-slate-300">
               Description
             </label>
             <textarea
               id="description"
               rows={3}
-              className="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm text-ink placeholder:text-slate-400 focus:ring-2 focus:ring-amber"
+              className="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm text-ink placeholder:text-slate-400 focus:ring-2 focus:ring-amber dark:border-slate-600 dark:bg-slate-900 dark:text-white"
               value={values.description}
               onChange={(e) => setValues({ ...values, description: e.target.value })}
               placeholder="Optional details"
@@ -100,12 +100,12 @@ export function TaskFormModal({ open, initialTask, onClose, onSubmit }: TaskForm
 
           <div className="grid grid-cols-2 gap-4">
             <div>
-              <label htmlFor="priority" className="mb-1 block text-sm font-medium text-slate-700">
+              <label htmlFor="priority" className="mb-1 block text-sm font-medium text-slate-700 dark:text-slate-300">
                 Priority
               </label>
               <select
                 id="priority"
-                className="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm text-ink focus:ring-2 focus:ring-amber"
+                className="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm text-ink focus:ring-2 focus:ring-amber dark:border-slate-600 dark:bg-slate-900 dark:text-white"
                 value={values.priority}
                 onChange={(e) =>
                   setValues({ ...values, priority: e.target.value as TaskFormValues['priority'] })
@@ -118,12 +118,12 @@ export function TaskFormModal({ open, initialTask, onClose, onSubmit }: TaskForm
             </div>
 
             <div>
-              <label htmlFor="status" className="mb-1 block text-sm font-medium text-slate-700">
+              <label htmlFor="status" className="mb-1 block text-sm font-medium text-slate-700 dark:text-slate-300">
                 Status
               </label>
               <select
                 id="status"
-                className="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm text-ink focus:ring-2 focus:ring-amber"
+                className="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm text-ink focus:ring-2 focus:ring-amber dark:border-slate-600 dark:bg-slate-900 dark:text-white"
                 value={values.status}
                 onChange={(e) =>
                   setValues({ ...values, status: e.target.value as TaskFormValues['status'] })
@@ -150,7 +150,7 @@ export function TaskFormModal({ open, initialTask, onClose, onSubmit }: TaskForm
             <button
               type="button"
               onClick={onClose}
-              className="rounded-lg border border-slate-300 px-4 py-2 text-sm font-medium text-slate-600 hover:bg-slate-50"
+              className="rounded-lg border border-slate-300 px-4 py-2 text-sm font-medium text-slate-600 hover:bg-slate-50 dark:border-slate-600 dark:text-slate-300 dark:hover:bg-slate-700"
             >
               Cancel
             </button>

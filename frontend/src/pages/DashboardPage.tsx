@@ -11,6 +11,7 @@ import {
 } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import { Hexagon } from '../components/Hexagon';
+import { ThemeToggle } from '../components/ThemeToggle';
 import { StatCard } from '../components/StatCard';
 import { TaskToolbar } from '../components/TaskToolbar';
 import { TaskRow } from '../components/TaskRow';
@@ -121,22 +122,25 @@ export function DashboardPage() {
   }
 
   return (
-    <div className="min-h-screen bg-canvas">
-      <header className="border-b border-slate-200 bg-white">
+    <div className="min-h-screen bg-canvas dark:bg-ink">
+      <header className="border-b border-slate-200 bg-white dark:border-slate-700 dark:bg-slate-800">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4 sm:px-6">
           <div className="flex items-center gap-3">
             <Hexagon className="h-8 w-8" />
             <div>
-              <h1 className="font-display text-base font-semibold text-ink">Task Manager</h1>
-              <p className="text-xs text-slate-400">Signed in as {user?.name}</p>
+              <h1 className="font-display text-base font-semibold text-ink dark:text-white">Task Manager</h1>
+              <p className="text-xs text-slate-400 dark:text-slate-500">Signed in as {user?.name}</p>
             </div>
           </div>
-          <button
-            onClick={handleLogout}
-            className="flex items-center gap-1.5 rounded-lg border border-slate-300 px-3 py-2 text-sm font-medium text-slate-600 hover:bg-slate-50"
-          >
-            <LogOut className="h-4 w-4" /> Logout
-          </button>
+          <div className="flex items-center gap-2">
+            <ThemeToggle />
+            <button
+              onClick={handleLogout}
+              className="flex items-center gap-1.5 rounded-lg border border-slate-300 px-3 py-2 text-sm font-medium text-slate-600 hover:bg-slate-50 dark:border-slate-600 dark:text-slate-300 dark:hover:bg-slate-700"
+            >
+              <LogOut className="h-4 w-4" /> Logout
+            </button>
+          </div>
         </div>
       </header>
 
@@ -194,7 +198,7 @@ export function DashboardPage() {
 
         <div className="mt-6 flex flex-col gap-4">
           <div className="flex items-center justify-between">
-            <h2 className="font-display text-lg font-semibold text-ink">Your Tasks</h2>
+            <h2 className="font-display text-lg font-semibold text-ink dark:text-white">Your Tasks</h2>
             <button
               onClick={openCreateForm}
               className="flex items-center gap-1.5 rounded-lg bg-amber px-4 py-2 text-sm font-medium text-ink hover:brightness-95"
@@ -205,13 +209,13 @@ export function DashboardPage() {
 
           <TaskToolbar query={query} onChange={setQuery} />
 
-          <div className="rounded-xl border border-slate-200 bg-white">
+          <div className="rounded-xl border border-slate-200 bg-white dark:border-slate-700 dark:bg-slate-800">
             {loading ? (
-              <p className="p-8 text-center text-sm text-slate-400">Loading tasks…</p>
+              <p className="p-8 text-center text-sm text-slate-400 dark:text-slate-500">Loading tasks…</p>
             ) : tasks.length === 0 ? (
               <div className="p-10 text-center">
-                <p className="font-display text-sm font-medium text-ink">No tasks match right now</p>
-                <p className="mt-1 text-sm text-slate-400">
+                <p className="font-display text-sm font-medium text-ink dark:text-white">No tasks match right now</p>
+                <p className="mt-1 text-sm text-slate-400 dark:text-slate-500">
                   Try clearing filters, or create a new task to get started.
                 </p>
               </div>

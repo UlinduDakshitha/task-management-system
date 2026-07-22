@@ -5,7 +5,7 @@
 @tailwind utilities;
 
 body {
-  @apply bg-canvas text-ink font-body antialiased;
+  @apply bg-canvas text-ink font-body antialiased transition-colors duration-200 dark:bg-ink dark:text-canvas;
 }
 
 /* Visible keyboard focus everywhere, instead of the browser default outline */

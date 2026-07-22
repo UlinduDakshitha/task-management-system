@@ -21,14 +21,14 @@ export function TaskToolbar({ query, onChange }: TaskToolbarProps) {
   }
 
   return (
-    <div className="flex flex-col gap-3 rounded-xl border border-slate-200 bg-white p-4 sm:flex-row sm:items-center sm:justify-between">
+    <div className="flex flex-col gap-3 rounded-xl border border-slate-200 bg-white p-4 dark:border-slate-700 dark:bg-slate-800 sm:flex-row sm:items-center sm:justify-between">
       <form onSubmit={handleSearchSubmit} className="flex w-full max-w-sm gap-2">
         <input
           type="search"
           placeholder="Search by task title…"
           value={searchInput}
           onChange={(e) => setSearchInput(e.target.value)}
-          className="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm focus:ring-2 focus:ring-amber"
+          className="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm focus:ring-2 focus:ring-amber dark:border-slate-600 dark:bg-slate-900 dark:text-white"
           aria-label="Search tasks by title"
         />
         <button
@@ -43,7 +43,7 @@ export function TaskToolbar({ query, onChange }: TaskToolbarProps) {
         <select
           value={query.status ?? ''}
           onChange={handleSelect('status')}
-          className="rounded-lg border border-slate-300 px-3 py-2 text-sm focus:ring-2 focus:ring-amber"
+          className="rounded-lg border border-slate-300 px-3 py-2 text-sm focus:ring-2 focus:ring-amber dark:border-slate-600 dark:bg-slate-900 dark:text-white"
           aria-label="Filter by status"
         >
           <option value="">All statuses</option>
@@ -55,7 +55,7 @@ export function TaskToolbar({ query, onChange }: TaskToolbarProps) {
         <select
           value={query.priority ?? ''}
           onChange={handleSelect('priority')}
-          className="rounded-lg border border-slate-300 px-3 py-2 text-sm focus:ring-2 focus:ring-amber"
+          className="rounded-lg border border-slate-300 px-3 py-2 text-sm focus:ring-2 focus:ring-amber dark:border-slate-600 dark:bg-slate-900 dark:text-white"
           aria-label="Filter by priority"
         >
           <option value="">All priorities</option>
@@ -67,7 +67,7 @@ export function TaskToolbar({ query, onChange }: TaskToolbarProps) {
         <select
           value={query.sort ?? 'newest'}
           onChange={handleSelect('sort')}
-          className="rounded-lg border border-slate-300 px-3 py-2 text-sm focus:ring-2 focus:ring-amber"
+          className="rounded-lg border border-slate-300 px-3 py-2 text-sm focus:ring-2 focus:ring-amber dark:border-slate-600 dark:bg-slate-900 dark:text-white"
           aria-label="Sort tasks"
         >
           <option value="newest">Newest created</option>
