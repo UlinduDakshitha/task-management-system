@@ -4,6 +4,34 @@ A full-stack Task Management System built for the Koncepthive Full Stack Web Dev
 Intern technical assessment. Users log in, see a dashboard summary of their tasks, and
 create, edit, delete, search, filter, and sort tasks.
 
+## Live Demo
+
+### Frontend
+https://task-management-system-umber-nine.vercel.app/
+
+### Backend API
+https://task-management-system-production-ab96.up.railway.app
+
+### Demo Credentials
+
+**Email:** `admin@test.com`
+
+**Password:** `123456`
+
+## Screenshots
+
+### Login
+
+![Login](screenshots/login.png)
+
+### Dashboard
+
+![Dashboard](screenshots/dashboard.png)
+
+### Create & Manage Tasks
+
+![### Create & Manage Tasks](screenshots/tasks.png)
+
 ## Project Overview
 
 - **Auth**: single seeded user, JWT-based login/logout
@@ -211,8 +239,8 @@ npm test
 - No registration/password-reset flow (out of scope per the brief).
 - No refresh tokens — the JWT simply expires after `JWT_EXPIRES_IN` and the user must
   log in again.
-- No automated test suite (unit/integration tests were listed as a bonus, not core).
-- No Docker setup or deployment — this README covers local setup only.
+- Unit tests cover validation logic and pure utility functions (dates, error
+  handling); there's no integration test suite hitting a real database yet.
 - Search only covers title, per the requirement; there's no full-text search across
   descriptions.
 
@@ -224,8 +252,7 @@ npm test
 - Pagination
 - Dark mode with a toggle button (persisted in localStorage)
 - Docker support (`docker compose up --build` runs the full stack)
-- Unit tests for backend validation and utility logic (`npm test` in `backend/`)
-
-Not implemented (time-boxed for the assessment): refresh tokens and hosted
-deployment (frontend/backend URLs, if deployed, are listed in the submission
-email).
+- Unit tests for backend validation/error handling (Jest) and frontend
+  date/overdue logic (Vitest)
+- Deployed live: frontend on Vercel, backend + PostgreSQL on Railway
+  
